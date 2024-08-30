@@ -1,5 +1,5 @@
 ---
 title: Anaglyph
-layout: template
+layout: index
 filename: ./Anaglyph/index.html
 --- 
