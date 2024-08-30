@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Thomas Stearns' GitHub Pages</title>
+</head>
+<body>
+
+<h1 >Thomas Stearns</h1>
+<a href="https://github.com/ToeMash">GitHub.com/ToeMash</a>
+{% for page in site.pages %}
+    <a href={{ page.Anaglyph }}>{{ page.Anaglyph }}</a>
+{% endfor %}
+{{ content }}
+</body>
+</html>
