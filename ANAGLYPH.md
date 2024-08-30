@@ -1,5 +1,5 @@
 ---
 title: Anaglyph
 layout: template
-filename: ANAGLYPH.md
+filename: ./Anaglyph/index.html
 --- 
