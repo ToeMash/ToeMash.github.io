@@ -1,5 +1,5 @@
 ---
 title: Anaglyph
-layout: anaglyph
+layout: glyph
 filename: ANAGLYPH.md
 --- 
