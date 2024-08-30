@@ -1,3 +1,5 @@
+---
 title: Anaglyph
 layout: template
-filename: Anaglyph
+filename: ANAGLYPH.md
+--- 
