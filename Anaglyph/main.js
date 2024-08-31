@@ -21,6 +21,17 @@ function resetGrid() {
     }
 }
 
+function resetPadding() {
+    for (let i = 0; i < size * size; i++) {
+        if (grid[i] == 1) {
+            pass
+        } else {
+            grid[i] == 0
+        }
+    }
+    markPadding()
+}
+
 function getNeighbors(x, y) {
     let neighbors = []
     for (let i = 0; i < padding; i++) {
@@ -203,6 +214,7 @@ diff.addEventListener('keyup', function(){
 
 pad.addEventListener('keyup', function(){
     padding = pad.value
+    resetPadding()
 })
 
 populate(size)
