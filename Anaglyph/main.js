@@ -23,10 +23,8 @@ function resetGrid() {
 
 function resetPadding() {
     for (let i = 0; i < size * size; i++) {
-        if (grid[i] == 1) {
-            pass
-        } else {
-            grid[i] == 0
+        if (grid[i] != 1) {
+            grid[i] = 0
         }
     }
     markPadding()
@@ -48,7 +46,6 @@ function getNeighbors(x, y) {
             if (x + i <= size - 1 && y - j >= 0) {
                 neighbors.push([x + i, y - j])
             }
-            
         }
     }
     //console.log("Neighbors = ", neighbors)
@@ -69,7 +66,6 @@ function markPadding() {
                 }
             }
         }
-        
     }
 }
 
@@ -185,8 +181,9 @@ function glyph(arr) {
 }
 
 function createGlyph(){
+    resetPadding()
     markPadding()
-    //console.log(grid)
+    console.log(grid)
     container.innerHTML = ''
     let colors = glyph(grid)
     container.style.setProperty('--size', size)
