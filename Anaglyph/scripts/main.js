@@ -8,7 +8,9 @@ const img = document.getElementById('image-input')
 const diff = document.querySelector('.difficulty')
 const pad = document.querySelector('.padding')
 const preview = document.getElementById('preview')
+const dark = document.querySelector('.darkness')
 
+let darkness = Number(dark.value)
 let size = sizeEl.value
 let difficulty = diff.value
 let padding = pad.value
@@ -142,7 +144,6 @@ function rgbToHex(arr) {
     const b = Math.round(arr[2])
     return ((r << 16) + (g << 8) + b).toString(16).padStart(6, '0');
 }
-    
 
 var redTop = 55;
 var blueLow = 75;
@@ -155,14 +156,15 @@ var satur=255;
 function selectCyan(){
     odstin=Math.random()*255;
     satur=255;
-    while(odstin<blueLow || odstin>blueTop){
+    while(odstin<blueLow + darkness || odstin>blueTop){
+        console.log("odstin=", odstin, " blueLow+darkness=", blueLow + darkness)
         odstin=Math.random()*255;
     }
 };
 
 function selectRed(){
     odstin=Math.random()*255;
-    while(odstin>redTop && odstin<purpleLow){
+    while(odstin>redTop && odstin<purpleLow + darkness){
         odstin=Math.random()*255;
     }
     satur=Math.random()*8;
@@ -171,9 +173,12 @@ function selectRed(){
 
 function glyph(arr) {
     let out_arr = []
+    console.log("calling glyph()")
     for (i = 0; i < size; i++) {
         for (j = 0; j < size; j++) {
+            console.log("i, j=", i, j)
             let index = i*size + j
+            console.log(index)
             odstin=Math.random()*255;
             satur=255;
             pom=Math.random()*100;
@@ -181,7 +186,7 @@ function glyph(arr) {
             if (arr[index] == 1) {
                 selectCyan()
             } else if (arr[index] == 2) {
-                if (Math.random() > difficulty / 100) {
+                if (Math.random() > difficulty + .1 / 100) {
                     selectRed()
                 } else {
                     selectCyan()
@@ -203,11 +208,12 @@ function glyph(arr) {
 function createGlyph(){
     resetPadding()
     markPadding()
-    // console.log(grid)
+    console.log(grid)
     container.innerHTML = ''
     let colors = glyph(grid)
     container.style.setProperty('--size', size)
     for (let i = 0; i < size * size; i++) {
+        console.log(i)
         const div = document.createElement('div')
         div.classList.add('pixel')
 
@@ -234,6 +240,10 @@ pad.addEventListener('keyup', function(){
     resetPadding()
 })
 
+dark.addEventListener('keyup', function(){
+    darkness = Number(dark.value)
+})
+
 img.addEventListener('change', () => {
     const reader = new FileReader()
     reader.onload = () => {
@@ -248,7 +258,7 @@ img.addEventListener('change', () => {
 
             context.drawImage(myImage, 0, 0);
             const imageData = context.getImageData(0, 0, myImage.width, myImage.height);
-            // console.log(imageData)
+            console.log(imageData)
             detectQRCode(imageData)
         }
     };
@@ -262,8 +272,8 @@ function detectQRCode(imageData) {
     let code = jsQR(imageData.data, imageData.width, imageData.height)
 
     if (code) {
-        // console.log("Found QR code", imageData.data)
-        // console.log(code.chunks)
+        console.log("Found QR code", imageData.data)
+        //console.log(code.chunks)
 
         const grid_size = getQRGridSize(code)
 
@@ -273,10 +283,10 @@ function detectQRCode(imageData) {
             height: grid_size,
             colorDark : "#000000",
             colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
+            correctLevel : QRCode.CorrectLevel.Q
         });
         size = qrcode._oQRCode.modules.length
-        // console.log("module = ", qrcode._oQRCode.modules)
+        console.log("module = ", qrcode._oQRCode.modules)
         drawMatrix(qrcode._oQRCode.modules)
     }
 }

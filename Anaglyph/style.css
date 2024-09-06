@@ -24,11 +24,10 @@ form{
 
 .navbar, .container{
     background-color: rgb(28, 28, 29);
-    width: 800px;
     border-radius: 3px;
 }
 .navbar{
-    width: 800px;
+    width: 1000px;
     padding: 1em;
     margin-bottom: 1em;
     display: flex;
@@ -48,6 +47,7 @@ form{
 .container{
     --size: 4;
     height: 800px;
+    width: 800px;
     display: grid;
     grid-template-columns: repeat(var(--size), 1fr);
     grid-template-rows: repeat(var(--size), 1fr);
