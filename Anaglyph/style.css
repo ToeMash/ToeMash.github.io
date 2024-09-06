@@ -14,11 +14,15 @@ body{
     flex-direction: column;
 }
 label{
-    color: #ffffff
+    color: #ffffff;
 }
 input[type=number]{
     width: 10ch;
     max-width: 100%;
+}
+form{
+    color: #ffffff;
+    width: 200px;
 }
 
 .navbar, .container{
@@ -27,6 +31,7 @@ input[type=number]{
     border-radius: 3px;
 }
 .navbar{
+    width: 800px;
     padding: 1em;
     margin-bottom: 1em;
     display: flex;
@@ -49,10 +54,10 @@ input[type=number]{
     display: grid;
     grid-template-columns: repeat(var(--size), 1fr);
     grid-template-rows: repeat(var(--size), 1fr);
-    gap: 3px;
+    gap: 0px;
     padding: 3px;
 }
 .pixel{
     background-color: rgb(61, 61, 61);
-    border-radius: 2px;
+    border-radius: 0px;
 }
