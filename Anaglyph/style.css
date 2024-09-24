@@ -4,10 +4,9 @@
     box-sizing: border-box;
 }
 body{
-    background-color: blueviolet;
+    background-color: rgb(191, 152, 228);
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 label{
@@ -21,10 +20,34 @@ form{
     color: #ffffff;
     width: 200px;
 }
-
+p{
+    background-color: rgb(28, 28, 29);
+    padding: 1em;
+    width: 600px;
+    margin-bottom: 1em;
+    border-radius: 3px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+}
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+    gap: 50px;
+}
+#explanation{
+    text-align: center;
+}
+.navbar, #wrapper, a{
+    align-self: center;
+}
 .navbar, .container{
     background-color: rgb(28, 28, 29);
     border-radius: 3px;
+
 }
 .navbar{
     width: 1000px;

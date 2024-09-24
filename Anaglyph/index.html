@@ -26,14 +26,21 @@
         </form>
         <button class="anaglyph">Create Anaglyph</button>
     </div>
-    <div class="container">
-        <!-- Here we will add divs representing our pixels -->
+    <div id="wrapper">
+        <div id="explanation">
+            <p>Use the box to draw! The size option modifies the number of pixels. The 'Create Anaglyph' button converts the drawing to an anaglyph, meaning the drawing can only be seen through a red lens.
+                The padding option controls the amount of space around the dark pixels within the anaglyph. The difficulty will add more dark pixels within the padding space, making the image harder to see.
+                The darkness option controls the color range of the reds and cyans in the anaglyph, meaning with a higher darkness the anaglyph will have a greater contrast. The image selection allows the user to input an image of a QR Code, which can then be made into an anaglyph.
+                To be able to scan the QR Code through a red lens, I would recommend a darkness of around 50. This was made for use by the San Jose Museum of Art for a scavenger hunt.
+            </p>
+        </div>
+        <div class="container" ondragstart="return false;" ondrop="return false;">
+        </div>
     </div>
     <img id="preview">
     <script type="text/javascript" src="scripts/main.js"></script>
     <script type="text/javascript" src="scripts/node_modules/jsqr/dist/jsQR.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-    
 </body>
 <body>
     <a href="https://www.30secondsofcode.org/js/s/rgb-hex-hsl-hsb-color-format-conversion/">Source1</a>
